@@ -15,7 +15,7 @@
         </nav>
     </header>
     <main>
-        <h1>Site en cours de frabrication</h1>
+        <h1>Site en cours de fabrication</h1>
         <hr />
         <router-view></router-view>
         <hr />
