@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../pages/HomePage.vue';
-import EnlevementEpaves from '../pages/EnlevementEpaves.vue';
+import EnlevementEpaves from '../pages/EnlevementEpave.vue';
 import Formalites from '../pages/Formalites.vue';
 import RachatMetaux from '../pages/RachatMetaux.vue';
 import Contact from '../pages/Contact.vue';
