@@ -1,38 +1,61 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Navbar from './components/Navbar.vue';
+</script>
 
 <template>
     <header>
-        <nav>
-            <ul>
-                <routerLink to="/">Accueil</routerLink>
-                <routerLink to="/enlevement-epave">Enlèvement Epave</routerLink>
-                <routerLink to="/formalites-administrative"
-                    >Formalités Administratives</routerLink
-                >
-                <routerLink to="/rachat-metaux">Rachat Métaux</routerLink>
-                <routerLink to="/contact">Contact</routerLink>
-            </ul>
-        </nav>
+        <Navbar />
     </header>
     <main>
-        <h1>Site en cours de fabrication</h1>
-        <hr />
         <router-view></router-view>
-        <hr />
     </main>
     <footer>
-        <span>&copy; Copyright 2024-2027 - tous droits réservés</span>
         <span
-            >Site réalisé par Mr GUILLON Alain (Développeur fullstack et
-            Alternant RSSI)</span
+            ><small
+                >&copy; Copyright 2024-2027 - tous droits réservés</small
+            ></span
         >
+        <span
+            ><small>
+                <routerLink to="/mentions-legales">Mentions Légales</routerLink>
+            </small>
+        </span>
+        <span>
+            <small>Site réalisé par Mr GUILLON Alain</small>
+        </span>
     </footer>
 </template>
 
 <style lang="scss">
 @use './assets/scss/main.scss' as *;
 
-#app {
-    padding: 0;
+header {
+    width: 100vw;
+}
+main {
+    padding: 1em 2em;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--dark-2);
+    height: 100%;
+    padding: 10px;
+
+    span {
+        color: var(--gray-2);
+    }
+
+    a {
+        color: var(--success-1);
+    }
 }
 </style>

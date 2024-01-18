@@ -5,6 +5,7 @@ import Formalites from '../pages/Formalites.vue';
 import RachatMetaux from '../pages/RachatMetaux.vue';
 import Contact from '../pages/Contact.vue';
 import NotFound from '../pages/NotFound.vue';
+import Mentions from '../pages/Mentions.vue';
 
 export const routes: RouteRecordRaw[] = [
     { path: '/', component: HomePage },
@@ -12,5 +13,6 @@ export const routes: RouteRecordRaw[] = [
     { path: '/formalites-administratives', component: Formalites },
     { path: '/rachat-metaux', component: RachatMetaux },
     { path: '/contact', component: Contact },
+    { path: '/mentions-legales', component: Mentions },
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];
