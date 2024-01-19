@@ -33,7 +33,7 @@ header {
     width: 100vw;
 }
 main {
-    padding: 1em 2em;
+    padding: 0;
     width: 100vw;
     display: flex;
     align-items: center;
