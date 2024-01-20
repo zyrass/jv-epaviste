@@ -1,6 +1,7 @@
 <template>
     <nav id="navbar">
-        <span class="title">JV-EPAVISTE.fr</span>
+        <span class="title">jv-epaviste.fr</span>
+        <span class="phone">06 46 89 65 78</span>
         <div id="menu-toggle" @click="toggleMenu">
             <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
             <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
@@ -8,30 +9,31 @@
         </div>
         <div v-if="isMenuOpen" id="menu-content">
             <div class="menu-links">
-                <routerLink @click="isMenuOpen = !isMenuOpen" to="/"
-                    >Accueil</routerLink
+                <routerLink @click="isMenuOpen = !isMenuOpen" to="/">
+                    <i class="fas fa-home"></i> Accueil</routerLink
                 >
                 <routerLink
                     @click="isMenuOpen = !isMenuOpen"
                     to="/enlevement-epave"
-                    >Enlèvement Epave</routerLink
+                    ><i class="fas fa-truck"></i> Enlèvement Epave</routerLink
                 >
                 <routerLink
                     @click="isMenuOpen = !isMenuOpen"
                     to="/formalites-administratives"
-                    >Formalités Administratives</routerLink
+                    ><i class="fas fa-file-alt"></i> Formalités
+                    Administratives</routerLink
                 >
                 <routerLink
                     @click="isMenuOpen = !isMenuOpen"
                     to="/rachat-metaux"
-                    >Rachat Métaux</routerLink
+                    ><i class="fas fa-coins"></i> Rachat Métaux</routerLink
                 >
                 <routerLink @click="isMenuOpen = !isMenuOpen" to="/contact"
-                    >Contact</routerLink
+                    ><i class="fas fa-envelope"></i> Contact</routerLink
                 >
                 <!-- Autres liens -->
             </div>
-            <div>
+            <div class="status">
                 Actuellement
                 <span
                     :class="{
@@ -41,6 +43,17 @@
                 >
                     {{ openStatus }}
                 </span>
+
+                <div class="horaires">
+                    <h3>Horaires d'ouverture</h3>
+                    <p>
+                        <strong>7 jours sur 7</strong><br />
+                        <span
+                            >⏰ De <span class="heure">7 h 00</span> à
+                            <span class="heure">20 h 00</span></span
+                        >
+                    </p>
+                </div>
             </div>
             <div class="menu-logo">
                 <img :src="Logo" alt="Logo jv-epaviste.fr" />
@@ -82,11 +95,18 @@ const openStatus = computed(() => {
     justify-content: space-between;
     align-items: center;
     height: 54px;
+    z-index: 1000;
 
-    span.title {
-        font-size: calc(1rem + 1vmin);
-        color: var(--gray-1);
-        margin-left: 2rem;
+    span {
+        &.title {
+            font-size: calc(0.8rem + 1vmin);
+            color: var(--gray-1);
+            margin-left: 1rem;
+        }
+        &.phone {
+            font-size: calc(0.8rem + 1vmin);
+            color: var(--warning-1);
+        }
     }
 
     #menu-toggle {
@@ -110,7 +130,7 @@ const openStatus = computed(() => {
             // background-color: var(--gray-1);
             position: absolute;
             width: 100%; /* Étant en absolute ça revient à dire que la hauteur est à 35px */
-            height: 4px;
+            height: 2px;
             border-radius: 4px;
             background-color: #fff;
             left: 0;
@@ -120,10 +140,10 @@ const openStatus = computed(() => {
                 top: 0;
             }
             &:nth-child(2) {
-                top: 12px;
+                top: 10px;
             }
             &:nth-child(3) {
-                top: 25px;
+                top: 20px;
             }
         }
 
@@ -131,7 +151,7 @@ const openStatus = computed(() => {
         /* Transformation pour la première ligne */
         .hamburger-line.active:nth-child(1) {
             transform: rotate(45deg);
-            top: 12px;
+            top: 10px;
         }
 
         /* Cacher la deuxième ligne */
@@ -142,7 +162,7 @@ const openStatus = computed(() => {
         /* Transformation pour la troisième ligne */
         .hamburger-line.active:nth-child(3) {
             transform: rotate(-45deg);
-            top: 12px;
+            top: 10px;
         }
     }
 }
@@ -159,23 +179,69 @@ const openStatus = computed(() => {
     flex-direction: column;
     justify-content: space-between;
     padding: 0px 10px 10px;
-    z-index: 1000;
 
     .menu-links {
-        background-color: var(--gray-3);
         width: 100%;
+        margin-bottom: 5px;
+        padding-top: 10px;
         a {
+            background-color: var(--gray-3);
+            margin: 5px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             text-decoration: none;
             color: var(--gray-1);
             padding: 10px 0;
             transition: all 0.3s ease-in-out;
+            font-size: 0.8rem;
 
             &:hover {
                 background-color: var(--gray-1);
                 color: var(--gray-3);
+            }
+
+            i {
+                padding: 0 15px;
+            }
+        }
+    }
+
+    .status {
+        margin: 1rem 0;
+    }
+
+    table {
+        font-size: small;
+        margin: 1rem auto;
+        border-collapse: collapse;
+        background-color: var(--gray-1);
+        width: 100%;
+        color: var(--dark-2);
+        thead {
+            text-transform: uppercase;
+            tr {
+                th {
+                    border: 1px solid var(--dark-1);
+                    padding: 5px 0;
+                    background-color: var(--gray-3);
+                    color: var(--gray-1);
+                }
+            }
+        }
+        tbody {
+            tr {
+                border: 1px solid var(--dark-1);
+                td {
+                    border: 1px solid var(--dark-1);
+                    padding: 5px;
+                    &:first-child {
+                        text-align: left;
+                    }
+                    &:not(:first-child) {
+                        text-align: center;
+                    }
+                }
             }
         }
     }
@@ -200,5 +266,32 @@ const openStatus = computed(() => {
 }
 .isOpen {
     color: var(--success-1);
+}
+
+.horaires {
+    text-align: center;
+    margin: 20px 0;
+    background-color: var(--dark-3);
+    padding: 2rem 0;
+    box-shadow: inset 0 0 100px var(--dark-1);
+    border: 2px solid var(--gray-1);
+    border-radius: 5px;
+
+    h3 {
+        color: var(--gray-1);
+        font-weight: 700;
+    }
+
+    p {
+        strong,
+        span {
+            color: var(--gray-2);
+        }
+    }
+
+    .heure {
+        font-size: 1.2em;
+        color: var(--success-1);
+    }
 }
 </style>

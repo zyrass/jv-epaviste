@@ -8,19 +8,25 @@
             </header>
 
             <h2>
-                Veuillez prendre connaissance des conditions requises pour toute
-                demande d'enlèvement de véhicule hors d'usage
+                <i class="fas fa-list-alt"></i> - Veuillez prendre connaissance
+                des conditions requises pour toute demande d'enlèvement de
+                véhicule hors d'usage
             </h2>
 
-            <ol>
+            <ul>
                 <li>
                     Veuillez compléter le formulaire de cession de véhicule,
                     disponible sur le site officiel du service public à
                     l'adresse suivante
                     <a
+                        class="link"
                         href="https://www.service-public.fr/simulateur/calcul/15776"
                         >https://Service-public.fr/simulateur/calcul/15776</a
-                    >.
+                    >.<br />
+                    <strong>
+                        Notez que nous pouvons le faire directement sur place
+                        pour vous facilitez les démarches.
+                    </strong>
                 </li>
                 <li>
                     <strong>Certificat d'Immatriculation (Carte Grise)</strong>
@@ -41,14 +47,14 @@
                         >https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat</a
                     >.
                 </li>
-            </ol>
+            </ul>
 
             <h3>
-                Lors de l'enlèvement du véhicule, veuillez vous assurer de
-                respecter les points suivants
+                <i class="fas fa-truck-pickup"></i> - Lors de l'enlèvement du
+                véhicule, veuillez vous assurer de respecter les points suivants
             </h3>
 
-            <ul>
+            <ol type="1">
                 <li>
                     <strong>Barrage de la Carte Grise pour Cession</strong> : Au
                     moment de l'intervention, la carte grise doit être barrée
@@ -70,16 +76,16 @@
                     sujet à aucune restriction administrative mentionnée dans le
                     certificat de non-gage.
                 </li>
-            </ul>
+            </ol>
 
             <hr />
 
             <div class="satisfaction">
-                <span>Satisfaction Garantie à 100%</span>
-                <input
-                    type="button"
-                    value="Planification de votre Rendez-vous"
-                />
+                <routerLink to="/contact">Enlever une épave ?</routerLink>
+                <span
+                    ><i class="fas fa-thumbs-up"></i> Satisfaction Garantie à
+                    100%</span
+                >
             </div>
 
             <div class="info">
@@ -109,12 +115,16 @@
 
 header {
     width: 100vw;
-    background-color: var(--gray-3);
     color: var(--gray-1);
     height: 200px;
     display: flex;
     align-items: center;
     text-align: center;
+    background-color: var(--gray-3);
+}
+
+h1 {
+    text-shadow: 0 0 10px var(--dark-1);
 }
 
 h2,
@@ -123,10 +133,9 @@ h3 {
     font-weight: 700;
 }
 
-ol,
 ul {
     list-style-type: square;
-    padding: 1em 1em 0;
+    padding: 1rem 1.5rem 0;
 
     li {
         margin-left: 1em;
@@ -142,25 +151,62 @@ ul {
     margin-bottom: 2em;
 }
 
+ol {
+    padding: 1rem 3rem 0;
+    margin: 1em 0 3rem;
+    max-width: 700px;
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 0.5rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--gray-3);
+        z-index: -1;
+    }
+
+    li {
+        padding: 0.5rem 1.5rem 1rem;
+        border-radius: 0.5rem;
+        background: var(--gray-2);
+        color: var(--dark-1);
+    }
+
+    li + li {
+        margin-top: 1rem;
+    }
+}
+
+::marker {
+    font-weight: 900;
+    color: var(--gray-3);
+    font-size: 1.5rem;
+}
+
 .satisfaction {
-    height: 150px;
-    padding: 1em;
+    height: 250px;
+    padding: 3em;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: column;
 
     span {
         font-size: 1.3rem;
     }
 
-    input[type='button'] {
+    a {
         background-color: var(--success-1);
         color: var(--gray-1);
-        text-shadow: 0 0 2px var(--text-color);
+        text-shadow: 0 0 4px var(--dark-3);
         text-transform: uppercase;
         font-weight: bold;
-        padding: 12px;
+        padding: 12px 24px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px var(--dark-3);
         cursor: pointer;
     }
 }

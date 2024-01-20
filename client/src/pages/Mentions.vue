@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Mentions Légales</h1>
+        <h1><i class="fa-solid fa-scale-balanced"></i> - Mentions Légales</h1>
         <fieldset>
             <legend>Identité de l'entreprise</legend>
             <dl>
@@ -24,6 +24,7 @@
                     véhicules épaves VHU pour destruction
                 </dd>
             </dl>
+            <i class="fa-solid fa-address-card"></i>
         </fieldset>
 
         <hr />
@@ -38,6 +39,7 @@
                 <dt>Adresse postale</dt>
                 <dd>2 RUE KELLERMANN 59100 ROUBAIX</dd>
             </dl>
+            <i class="fa-solid fa-server"></i>
         </fieldset>
 
         <hr />
@@ -64,6 +66,7 @@
                 <dt>Formation actuellement</dt>
                 <dd>Expert en cybersécurité à l'IT-Akademy (bac+5)</dd>
             </dl>
+            <i class="fa-solid fa-code"></i>
         </fieldset>
     </div>
 </template>
@@ -92,7 +95,9 @@ fieldset {
     border: 2px solid var(--gray-3);
     border-radius: 5px;
     padding: 5px 20px;
-    margin: 12px 0 20px;
+    margin: 12px 1em 20px;
+    position: relative;
+    z-index: 0;
     legend {
         padding: 0 10px;
         color: var(--danger-1);
@@ -115,21 +120,18 @@ fieldset {
         margin-left: 20px;
         margin-bottom: 10px;
     }
-    // legend {
-    //     padding: 0 10px;
-    //     font-style: italic;
-    //     font-size: small;
-    //     color: var(--danger-1);
-    // }
-
-    // dt {
-    //     font-weight: 700;
-    // }
-    // dd {
-    //     padding-left: 15px;
-    //     font-weight: 800;
-    //     text-transform: capitalize;
-    // }
+    i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 200px;
+        opacity: 0.1;
+    }
 }
 
 p {
