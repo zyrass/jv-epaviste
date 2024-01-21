@@ -6,7 +6,7 @@ import { routes } from './router/routes';
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    scrollBehavior(to, from, savePosition) {
+    scrollBehavior(to) {
         if (to.hash) {
             return {
                 el: to.hash, // Correspond à un hash toto.html#un_titre

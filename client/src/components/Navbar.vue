@@ -8,7 +8,7 @@
             <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
         </div>
         <Transition appear>
-            <div v-if="isMenuOpen" id="menu-content">
+            <div ref="menuRef" v-if="isMenuOpen" id="menu-content">
                 <div class="menu-links">
                     <routerLink @click="isMenuOpen = !isMenuOpen" to="/">
                         <i class="fas fa-home"></i> Accueil</routerLink
@@ -68,20 +68,30 @@
 <script setup lang="ts">
 import Logo from '@/assets/images/logo.svg';
 import { ref, computed } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 
 // Ouverture du menu
 const isMenuOpen = ref(false);
-const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value;
-};
+const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value);
+
+// Ajoutez la référence au menu
+const menuRef = ref<HTMLElement | null>(null);
+
+// Utilisez onClickOutside pour détecter les clics en dehors du menu
+onClickOutside(menuRef, (event: MouseEvent) => {
+    if (menuRef.value && !menuRef.value.contains(event.target as Node)) {
+        isMenuOpen.value = false; // Clic en dehors du menu, fermez-le
+    }
+});
 
 // Afficher Ouvert ou Fermé
+// Les heures d'ouverture sont de 7h à 20h, du lundi (1) au dimanche (0)
 const isOpen = computed(() => {
     const now = new Date();
     const day = now.getDay(); // 0 = Dimanche, 1 = Lundi, ..., 6 = Samedi
     const hour = now.getHours(); // Heure actuelle
 
-    // Les heures d'ouverture sont de 7h à 21h, du lundi (1) au dimanche (0)
+    // Les heures d'ouverture sont de 7h à 20h, du lundi (1) au dimanche (0)
     return day >= 0 && day <= 6 && hour >= 7 && hour < 20;
 });
 const openStatus = computed(() => {
@@ -95,7 +105,7 @@ const openStatus = computed(() => {
     width: 100vw;
     background-color: #222222;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 54px;
     z-index: 1000;
