@@ -9,9 +9,19 @@ import {
 } from '@vue-leaflet/vue-leaflet';
 import { Feature, Geometry, GeoJsonProperties } from 'geojson';
 import * as L from 'leaflet';
-import { PathOptions, StyleFunction } from 'leaflet';
+import { Icon, PathOptions, StyleFunction } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import geoJsonData from '../assets/scripts/dataGeoJson.json';
+
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+Icon.Default.mergeOptions({
+    iconRetinaUrl,
+    iconUrl,
+    shadowUrl,
+});
 
 // Définir une interface pour les options de L.geoJSON
 interface GeoJsonOptions extends GeoJSON.GeoJsonObject {
@@ -33,6 +43,7 @@ interface MarkerData {
     description: string;
     shadowPane: string;
     title: string;
+    alt: string;
 }
 
 // Référence à la carte Leaflet
@@ -47,6 +58,7 @@ const markersData: MarkerData[] = [
             'Déplacement rapide<br><span style="color: green;">moins de 24h</span>',
         shadowPane: 'shadowPane',
         title: 'Rhône',
+        alt: 'Rhône',
     }, // Lyon pour le Rhône
     {
         name: 'Isère',
@@ -54,7 +66,8 @@ const markersData: MarkerData[] = [
         description:
             'Déplacement possible sur rendez-vous<br><span style="color: crimson;">max 48h</span>',
         shadowPane: 'shadowPane',
-        title: 'Rhône',
+        title: 'Isère',
+        alt: 'Isère',
     }, // Grenoble pour l'Isère
     {
         name: 'Ain',
@@ -62,7 +75,8 @@ const markersData: MarkerData[] = [
         description:
             'Déplacement possible sur rendez-vous<br><span style="color: crimson;">max 48h</span>',
         shadowPane: 'shadowPane',
-        title: 'Rhône',
+        title: 'Ain',
+        alt: 'Ain',
     }, // Bourg-en-Bresse pour l'Ain
 ];
 
@@ -168,7 +182,7 @@ onMounted(async () => {
                     cumque, atque itaque voluptate.
                 </p>
             </section>
-            <div id="map" style="height: calc(69vh - 53px); width: 100vw">
+            <div id="map" style="height: calc(50vh - 53px); width: 100vw">
                 <l-map
                     ref="map"
                     :zoom="zoom"
