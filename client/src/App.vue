@@ -7,7 +7,11 @@ import Navbar from './components/Navbar.vue';
         <Navbar />
     </header>
     <main>
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+            <Transition appear mode="out-in" name="animePage">
+                <Component :is="Component" />
+            </Transition>
+        </router-view>
     </main>
     <footer>
         <span
@@ -39,6 +43,16 @@ main {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+}
+
+.animePage-enter-from {
+    opacity: 0;
+}
+.animePage-enter-to {
+    opacity: 1;
+}
+.animePage-enter-active {
+    transition: all 0.4s ease-in-out;
 }
 
 footer {

@@ -7,58 +7,61 @@
             <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
             <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
         </div>
-        <div v-if="isMenuOpen" id="menu-content">
-            <div class="menu-links">
-                <routerLink @click="isMenuOpen = !isMenuOpen" to="/">
-                    <i class="fas fa-home"></i> Accueil</routerLink
-                >
-                <routerLink
-                    @click="isMenuOpen = !isMenuOpen"
-                    to="/enlevement-epave"
-                    ><i class="fas fa-truck"></i> Enlèvement Epave</routerLink
-                >
-                <routerLink
-                    @click="isMenuOpen = !isMenuOpen"
-                    to="/formalites-administratives"
-                    ><i class="fas fa-file-alt"></i> Formalités
-                    Administratives</routerLink
-                >
-                <routerLink
-                    @click="isMenuOpen = !isMenuOpen"
-                    to="/rachat-metaux"
-                    ><i class="fas fa-coins"></i> Rachat Métaux</routerLink
-                >
-                <routerLink @click="isMenuOpen = !isMenuOpen" to="/contact"
-                    ><i class="fas fa-envelope"></i> Contact</routerLink
-                >
-                <!-- Autres liens -->
-            </div>
-            <div class="status">
-                Actuellement
-                <span
-                    :class="{
-                        isOpen: openStatus === 'ouvert',
-                        isClose: openStatus === 'fermé',
-                    }"
-                >
-                    {{ openStatus }}
-                </span>
+        <Transition appear>
+            <div v-if="isMenuOpen" id="menu-content">
+                <div class="menu-links">
+                    <routerLink @click="isMenuOpen = !isMenuOpen" to="/">
+                        <i class="fas fa-home"></i> Accueil</routerLink
+                    >
+                    <routerLink
+                        @click="isMenuOpen = !isMenuOpen"
+                        to="/enlevement-epave"
+                        ><i class="fas fa-truck"></i> Enlèvement
+                        Epave</routerLink
+                    >
+                    <routerLink
+                        @click="isMenuOpen = !isMenuOpen"
+                        to="/formalites-administratives"
+                        ><i class="fas fa-file-alt"></i> Formalités
+                        Administratives</routerLink
+                    >
+                    <routerLink
+                        @click="isMenuOpen = !isMenuOpen"
+                        to="/rachat-metaux"
+                        ><i class="fas fa-coins"></i> Rachat Métaux</routerLink
+                    >
+                    <routerLink @click="isMenuOpen = !isMenuOpen" to="/contact"
+                        ><i class="fas fa-envelope"></i> Contact</routerLink
+                    >
+                    <!-- Autres liens -->
+                </div>
+                <div class="status">
+                    Actuellement
+                    <span
+                        :class="{
+                            isOpen: openStatus === 'ouvert',
+                            isClose: openStatus === 'fermé',
+                        }"
+                    >
+                        {{ openStatus }}
+                    </span>
 
-                <div class="horaires">
-                    <h3>Horaires d'ouverture</h3>
-                    <p>
-                        <strong>7 jours sur 7</strong><br />
-                        <span
-                            >⏰ De <span class="heure">7 h 00</span> à
-                            <span class="heure">20 h 00</span></span
-                        >
-                    </p>
+                    <div class="horaires">
+                        <h3>Horaires d'ouverture</h3>
+                        <p>
+                            <strong>7 jours sur 7</strong><br />
+                            <span
+                                >⏰ De <span class="heure">7 h 00</span> à
+                                <span class="heure">20 h 00</span></span
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="menu-logo">
+                    <img :src="Logo" alt="Logo jv-epaviste.fr" />
                 </div>
             </div>
-            <div class="menu-logo">
-                <img :src="Logo" alt="Logo jv-epaviste.fr" />
-            </div>
-        </div>
+        </Transition>
     </nav>
 </template>
 
@@ -172,7 +175,7 @@ const openStatus = computed(() => {
     top: 53px;
     right: 0;
     width: 80%;
-    height: calc(100% - 53px);
+    height: calc(100vh - 53px);
     background: var(--dark-2);
     color: white;
     display: flex;
@@ -293,5 +296,25 @@ const openStatus = computed(() => {
         font-size: 1.2em;
         color: var(--success-1);
     }
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.v-enter-to,
+.v-leave-from {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.v-enter-active {
+    transition: all 0.4s ease-in-out;
+}
+
+.v-leave-active {
+    transition: all 0.2s ease-in-out;
 }
 </style>

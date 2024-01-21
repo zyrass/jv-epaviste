@@ -23,36 +23,33 @@
                 />
 
                 <h2><i class="fas fa-magnet"></i> - Métaux Rachetés</h2>
-                <dl>
-                    <dt><strong>Cuivre</strong></dt>
-                    <dd>Tuyauterie, câblage, et bobines</dd>
-
-                    <dt><strong>Aluminium</strong></dt>
-                    <dd>Jantes, châssis de fenêtres, et profilés</dd>
-
-                    <dt><strong>Fer</strong></dt>
-                    <dd>Poutrelles, ferrailles diverses</dd>
-
-                    <dt><strong>Plomb</strong> et <strong>Zinc</strong></dt>
-                    <dd>Toitures, batteries</dd>
-
-                    <dt>
+                <ul>
+                    <li><strong>Cuivre</strong></li>
+                    <li><strong>Aluminium</strong></li>
+                    <li><strong>Fer</strong></li>
+                    <li><strong>Plomb</strong> et <strong>Zinc</strong></li>
+                    <li>
                         <strong>Inox</strong> et
                         <strong>Alliages spéciaux</strong>
-                    </dt>
-                    <dd>Éviers, plans de travail</dd>
-                </dl>
+                    </li>
+                </ul>
                 <img
                     src="@/assets/images/metaux.webp"
                     alt="image of handshake"
                 />
 
+                <!--
                 <h2><i class="fas fa-balance-scale"></i> - Conditions</h2>
                 <p>
                     Chaque offre de rachat est étudiée avec soin. Nous prenons
                     en compte les <em>frais de déplacement</em> pour assurer que
                     l'opération soit économiquement viable pour les deux
                     parties.
+                </p>
+                <p>
+                    Pour plus d'informations ou pour obtenir une estimation,
+                    <strong><a href="/contact">contactez-nous</a></strong> dès
+                    aujourd'hui.
                 </p>
                 <p class="rules">
                     Pour des raisons économiques, si le déplacement s'avère non
@@ -62,14 +59,8 @@
                         avantageuse pour vous comme pour nous.</strong
                     >
                 </p>
+                -->
             </section>
-            <footer>
-                <p>
-                    Pour plus d'informations ou pour obtenir une estimation,
-                    <strong><a href="/contact">contactez-nous</a></strong> dès
-                    aujourd'hui.
-                </p>
-            </footer>
         </article>
     </div>
 </template>
@@ -116,14 +107,14 @@ article {
             }
         }
 
-        dl {
-            dt::after {
-                content: ' :';
-                font-weight: 900;
-            }
-            dd {
+        ul {
+            padding-left: 2rem;
+            li {
+                list-style-type: disc;
                 padding-left: 1rem;
-                padding-bottom: 1rem;
+                &:last-child {
+                    padding-bottom: 1rem;
+                }
             }
         }
 
