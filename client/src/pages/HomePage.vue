@@ -8,10 +8,13 @@
                     <span>Épaviste</span>
                     <span>Ferrailleur</span>
                 </h1>
+
                 <p>
-                    Service d'enlèvement d'épaves gratuit et agréé VHU
-                    desservant <span>l'Ain</span>, <span>l'Isère</span>,
-                    <span>le Rhône</span> et <span>la Saône-et-Loire</span>.
+                    Service d'enlèvement d'épaves agréé VHU avec 8 ans
+                    d'expérience, au service de
+                    <span>l'Ain</span>, <span>l'Isère</span> et
+                    <span>le Rhône</span>. Faites confiance à notre expertise
+                    pour vous débarrasser de vos épaves en toute tranquillité.
                 </p>
 
                 <RouterLink to="/contact">Contactez-nous</RouterLink>

@@ -169,18 +169,65 @@ onMounted(async () => {
     <div class="container">
         <article>
             <header>
-                <h1>Enlèvement Epaves</h1>
+                <h1>
+                    <i class="fas fa-car-crash"></i>
+                    <div>Enlèvement d'Épaves</div>
+                </h1>
             </header>
-            <section>
+            <section id="procedure">
+                <h2>Comment ça marche ?</h2>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
-                    maiores ipsa debitis corrupti provident, eos libero
-                    architecto temporibus delectus quia, eligendi sit molestias,
-                    dolorum eaque quidem. Veritatis minima illo perferendis
-                    vitae non? Similique accusantium blanditiis nesciunt dolorum
-                    unde animi illum, minima odio eaque, accusamus eos sunt
-                    cumque, atque itaque voluptate.
+                    L'enlèvement d'épaves est un processus simple et rapide avec
+                    JV Epaviste. Suivez ces étapes pour dire adieu à votre vieux
+                    véhicule en toute sécurité :
                 </p>
+                <ol>
+                    <ol>
+                        <li>
+                            <h3>
+                                <i class="fas fa-phone-alt"></i>
+                                <strong>Contactez-nous :</strong>
+                            </h3>
+                            Remplissez notre formulaire en ligne ou appelez-nous
+                            directement. Nous planifierons un rendez-vous selon
+                            votre convenance, que vous soyez dans le Rhône,
+                            l'Ain ou l'Isère.
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fas fa-tools"></i>
+                                <strong>Préparation du véhicule :</strong>
+                            </h3>
+                            Assurez-vous que le véhicule est accessible et que
+                            tous les objets personnels ont été retirés.
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fas fa-truck-moving"></i>
+                                <strong>Rendez-vous sur place :</strong>
+                            </h3>
+                            Notre équipe professionnelle se rendra à l'adresse
+                            indiquée pour évaluer l'état de l'épave.
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fas fa-recycle"></i>
+                                <strong>Enlèvement et recyclage :</strong>
+                            </h3>
+                            Nous enlevons l'épave et nous occupons de toutes les
+                            démarches pour son recyclage écologique.
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fas fa-file-alt"></i>
+                                <strong>Certificat de destruction :</strong>
+                            </h3>
+                            Vous recevrez un certificat de destruction, preuve
+                            que votre véhicule a été traité conformément à la
+                            réglementation.
+                        </li>
+                    </ol>
+                </ol>
             </section>
             <div id="map" style="height: calc(50vh - 53px); width: 100vw">
                 <l-map
@@ -209,9 +256,7 @@ onMounted(async () => {
                     <!-- Ajout des données GeoJSON à la carte avec stylisation -->
                     <l-geo-json
                         :geojson="geoJsonData as GeoJSON.GeoJsonObject"
-                        :options="{
-                            style: style,
-                        }"
+                        :options="{ style: style }"
                     ></l-geo-json>
                 </l-map>
             </div>
@@ -227,30 +272,114 @@ onMounted(async () => {
     color: var(--gray-3);
 }
 
-header {
-    width: 100vw;
-    color: var(--gray-1);
-    height: 200px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: var(--gray-3);
-}
+.container {
+    height: 100%;
+    max-width: 100vw;
+    text-align: left;
+    color: var(--gray-3);
 
-h1 {
-    text-shadow: 0 0 10px var(--dark-1);
-    text-transform: uppercase;
+    header {
+        width: 100vw;
+        color: var(--gray-1);
+        height: 200px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: var(--gray-3);
+
+        h1 {
+            text-shadow: 0 0 10px var(--dark-1);
+            text-transform: uppercase;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            i {
+                color: var(--warning-1);
+            }
+
+            span {
+                height: 70%;
+            }
+
+            div {
+                height: 30%;
+            }
+        }
+    }
 }
 
 h2,
 h3 {
-    padding: 1em 1em 0;
+    padding: 0;
     font-weight: 700;
 }
 
 article {
     section {
-        padding: 3rem 1rem;
+        padding: 3rem 1rem 0;
+
+        p {
+            padding-top: 2rem 0 1em;
+            letter-spacing: 1.6px;
+        }
+
+        .div-age {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--success-1);
+            color: var(--gray-1);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ol {
+            padding: 1rem 0.5rem 0;
+            margin: 1em 0 3rem;
+            max-width: 700px;
+            position: relative;
+
+            &::before {
+                content: '';
+                width: 0.5rem;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: var(--gray-3);
+                z-index: -1;
+            }
+
+            li {
+                padding: 0.5rem 1.5rem 1rem;
+                border-radius: 0.5rem;
+                background: var(--gray-2);
+                color: var(--dark-1);
+
+                h3 {
+                    margin-bottom: 1rem;
+                }
+
+                i {
+                    padding-right: 0.5rem;
+                    color: var(--primary-1);
+                }
+                strong {
+                    text-transform: uppercase;
+                }
+            }
+
+            li + li {
+                margin-top: 1rem;
+            }
+        }
     }
 }
 </style>

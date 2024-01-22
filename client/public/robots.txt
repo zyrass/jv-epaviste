@@ -1,0 +1,8 @@
+User-agent: *
+
+Allow: /
+Allow: /enlevement-epave
+Allow: /formalites-administratives
+Allow: /rachat-metaux
+Allow: /contact
+Allow: /mentions-legales

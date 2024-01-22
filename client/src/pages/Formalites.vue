@@ -4,7 +4,13 @@
     <div class="container">
         <article>
             <header>
-                <h1>Formalités Administratives</h1>
+                <h1>
+                    <i class="fas fa-file-alt"></i>
+                    <div>
+                        <span>Formalités</span>
+                        <span>Administratives</span>
+                    </div>
+                </h1>
             </header>
 
             <h2>
@@ -116,7 +122,7 @@
 header {
     width: 100vw;
     color: var(--gray-1);
-    height: 200px;
+    height: 250px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -125,6 +131,25 @@ header {
 
 h1 {
     text-shadow: 0 0 10px var(--dark-1);
+    text-transform: uppercase;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    span {
+        height: 60%;
+    }
+
+    div {
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
 }
 
 h2,

@@ -24,3 +24,18 @@ const app = createApp(App);
 
 app.use(router);
 app.mount('#app');
+
+// Enregistrement du Service Worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/service-worker.js')
+        .then(function (registration) {
+            console.log(
+                'Service Worker enregistré avec succès, scope:',
+                registration.scope,
+            );
+        })
+        .catch(function (error) {
+            console.log("L'enregistrement du Service Worker a échoué:", error);
+        });
+}
