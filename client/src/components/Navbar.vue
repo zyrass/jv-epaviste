@@ -2,35 +2,29 @@
     <nav id="navbar">
         <span class="title">jv-epaviste.fr</span>
         <span class="phone">06 46 89 65 78</span>
-        <div id="menu-toggle" @click="toggleMenu">
-            <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
-            <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
-            <span class="hamburger-line" :class="{ active: isMenuOpen }"></span>
-        </div>
+
+        <button class="menu-btn" popovertarget="menu-content">
+            <img src="@/assets/images/Hamburger_icon.svg" alt="" />
+        </button>
+
         <Transition appear>
-            <div ref="menuRef" v-if="isMenuOpen" id="menu-content">
+            <div id="menu-content" popover role="menu">
                 <div class="menu-links">
-                    <routerLink @click="isMenuOpen = !isMenuOpen" to="/">
-                        <i class="fas fa-home"></i> Accueil</routerLink
+                    <routerLink to="/"
+                        ><i class="fas fa-home"></i> Accueil</routerLink
                     >
-                    <routerLink
-                        @click="isMenuOpen = !isMenuOpen"
-                        to="/enlevement-epave"
+                    <routerLink to="/enlevement-epave"
                         ><i class="fas fa-truck"></i> Enlèvement
                         Epave</routerLink
                     >
-                    <routerLink
-                        @click="isMenuOpen = !isMenuOpen"
-                        to="/formalites-administratives"
+                    <routerLink to="/formalites-administratives"
                         ><i class="fas fa-file-alt"></i> Formalités
                         Administratives</routerLink
                     >
-                    <routerLink
-                        @click="isMenuOpen = !isMenuOpen"
-                        to="/rachat-metaux"
+                    <routerLink to="/rachat-metaux"
                         ><i class="fas fa-coins"></i> Rachat Métaux</routerLink
                     >
-                    <routerLink @click="isMenuOpen = !isMenuOpen" to="/contact"
+                    <routerLink to="/contact"
                         ><i class="fas fa-envelope"></i> Contact</routerLink
                     >
                     <!-- Autres liens -->
@@ -67,22 +61,7 @@
 
 <script setup lang="ts">
 import Logo from '@/assets/images/logo.svg';
-import { ref, computed } from 'vue';
-import { onClickOutside } from '@vueuse/core';
-
-// Ouverture du menu
-const isMenuOpen = ref(false);
-const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value);
-
-// Ajoutez la référence au menu
-const menuRef = ref<HTMLElement | null>(null);
-
-// Utilisez onClickOutside pour détecter les clics en dehors du menu
-onClickOutside(menuRef, (event: MouseEvent) => {
-    if (menuRef.value && !menuRef.value.contains(event.target as Node)) {
-        isMenuOpen.value = false; // Clic en dehors du menu, fermez-le
-    }
-});
+import { computed } from 'vue';
 
 // Afficher Ouvert ou Fermé
 // Les heures d'ouverture sont de 7h à 20h, du lundi (1) au dimanche (0)
@@ -94,6 +73,7 @@ const isOpen = computed(() => {
     // Les heures d'ouverture sont de 7h à 20h, du lundi (1) au dimanche (0)
     return day >= 0 && day <= 6 && hour >= 7 && hour < 20;
 });
+
 const openStatus = computed(() => {
     return isOpen.value ? 'ouvert' : 'fermé';
 });
@@ -122,60 +102,18 @@ const openStatus = computed(() => {
         }
     }
 
-    #menu-toggle {
-        cursor: pointer;
-        position: relative;
-        width: 30px;
-        height: 25px;
-        margin-right: 2rem;
-
-        .hamburger-line {
-            // position: absolute; /* Position absolue pour que les lignes puissent être superposées */
-            // left: 0;
-            // right: 0;
-            // margin-left: auto;
-            // margin-right: auto;
-            // top: 50%; /* Centrage vertical */
-            // width: 100%;
-            // height: 3px;
-            // transition: all 0.3s ease;
-            // transform-origin: center; /* Assurez-vous que la rotation se fait autour du centre */
-            // background-color: var(--gray-1);
-            position: absolute;
-            width: 100%; /* Étant en absolute ça revient à dire que la hauteur est à 35px */
-            height: 2px;
-            border-radius: 4px;
-            background-color: #fff;
-            left: 0;
-            transition: all 0.3 ease-in-out;
-
-            &:nth-child(1) {
-                top: 0;
-            }
-            &:nth-child(2) {
-                top: 10px;
-            }
-            &:nth-child(3) {
-                top: 20px;
-            }
-        }
-
-        /* Animation pour l'icône active (croix) */
-        /* Transformation pour la première ligne */
-        .hamburger-line.active:nth-child(1) {
-            transform: rotate(45deg);
-            top: 10px;
-        }
-
-        /* Cacher la deuxième ligne */
-        .hamburger-line.active:nth-child(2) {
-            opacity: 0;
-        }
-
-        /* Transformation pour la troisième ligne */
-        .hamburger-line.active:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 10px;
+    .menu-btn {
+        height: calc(100% / 1.8);
+        width: calc(25% / 1.8);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.7;
+        transition: all 0.4s ease-in-out;
+        &:hover {
+            opacity: 1;
+            border: none;
         }
     }
 }
@@ -192,6 +130,25 @@ const openStatus = computed(() => {
     flex-direction: column;
     justify-content: space-between;
     padding: 0px 10px 10px;
+    border: none;
+
+    transition: translate 0.5s ease-out, display 0.5s ease-out allow-discrete,
+        overlay 0.5s ease-out allow-discrete;
+    translate: 150%;
+
+    &::backdrop {
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.5);
+        transition: opacity 0.5s;
+    }
+
+    &:popover-open {
+        translate: 25% 0;
+
+        &::backdrop {
+            opacity: 1;
+        }
+    }
 
     .menu-links {
         width: 100%;
@@ -224,40 +181,40 @@ const openStatus = computed(() => {
         margin: 1rem 0;
     }
 
-    table {
-        font-size: small;
-        margin: 1rem auto;
-        border-collapse: collapse;
-        background-color: var(--gray-1);
-        width: 100%;
-        color: var(--dark-2);
-        thead {
-            text-transform: uppercase;
-            tr {
-                th {
-                    border: 1px solid var(--dark-1);
-                    padding: 5px 0;
-                    background-color: var(--gray-3);
-                    color: var(--gray-1);
-                }
-            }
-        }
-        tbody {
-            tr {
-                border: 1px solid var(--dark-1);
-                td {
-                    border: 1px solid var(--dark-1);
-                    padding: 5px;
-                    &:first-child {
-                        text-align: left;
-                    }
-                    &:not(:first-child) {
-                        text-align: center;
-                    }
-                }
-            }
-        }
-    }
+    // table {
+    //     font-size: small;
+    //     margin: 1rem auto;
+    //     border-collapse: collapse;
+    //     background-color: var(--gray-1);
+    //     width: 100%;
+    //     color: var(--dark-2);
+    //     thead {
+    //         text-transform: uppercase;
+    //         tr {
+    //             th {
+    //                 border: 1px solid var(--dark-1);
+    //                 padding: 5px 0;
+    //                 background-color: var(--gray-3);
+    //                 color: var(--gray-1);
+    //             }
+    //         }
+    //     }
+    //     tbody {
+    //         tr {
+    //             border: 1px solid var(--dark-1);
+    //             td {
+    //                 border: 1px solid var(--dark-1);
+    //                 padding: 5px;
+    //                 &:first-child {
+    //                     text-align: left;
+    //                 }
+    //                 &:not(:first-child) {
+    //                     text-align: center;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     .menu-logo {
         // Styles pour le logo en bas du menu

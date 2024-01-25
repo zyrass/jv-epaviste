@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Alert from '../components/Alert.vue';
+</script>
 
 <template>
     <div class="container">
@@ -8,6 +10,10 @@
                     <span>Épaviste</span>
                     <span>Ferrailleur</span>
                 </h1>
+
+                <Alert
+                    message="Durant le développement du site, nous restons à votre disposition par téléphone pour toute assistance."
+                />
 
                 <p>
                     Service d'enlèvement d'épaves agréé VHU avec 8 ans

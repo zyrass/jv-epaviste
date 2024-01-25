@@ -270,13 +270,6 @@ onMounted(async () => {
     max-width: 100vw;
     text-align: left;
     color: var(--gray-3);
-}
-
-.container {
-    height: 100%;
-    max-width: 100vw;
-    text-align: left;
-    color: var(--gray-3);
 
     header {
         width: 100vw;
