@@ -17,6 +17,8 @@ import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
+const responseGeoJsonData = geoJsonData as GeoJSON.GeoJsonObject;
+
 Icon.Default.mergeOptions({
     iconRetinaUrl,
     iconUrl,
@@ -166,213 +168,140 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="container">
-        <article>
-            <header>
-                <h1>
-                    <i class="fas fa-car-crash"></i>
-                    <div>Enlèvement d'Épaves</div>
-                </h1>
-            </header>
-            <section id="procedure">
-                <h2>Comment ça marche ?</h2>
+    <article class="mt-14">
+        <header
+            class="bg-slate-900 h-44 flex items-center justify-center sm:h-56 md:h-72"
+        >
+            <h1
+                class="text-yellow-200 flex flex-col gap-4 items-center sm:gap-5 md:gap-6"
+            >
+                <i
+                    class="fas fa-car-crash text-4xl sm:text-5xl md:text-6xl"
+                ></i>
+                <span class="text-3xl sm:text-4xl md:text-5xl text-white"
+                    >Enlèvement d'Épaves</span
+                >
+            </h1>
+        </header>
+
+        <!-- CONTAINER -->
+        <div class="container py-4 mx-auto sm:py-5 md:py-6 lg:py-8 xl:py-9">
+            <section class="pb-4 px-4 sm:px-8 sm:pb-8 w-fit">
+                <h2 class="my-4 text-xl py-2 font-bold">
+                    <i class="fa-solid fa-question text-sky-500"></i> - Comment
+                    ça marche ?
+                </h2>
                 <p>
                     L'enlèvement d'épaves est un processus simple et rapide avec
                     JV Epaviste. Suivez ces étapes pour dire adieu à votre vieux
-                    véhicule en toute sécurité :
+                    véhicule en toute sécurité.
                 </p>
-                <ol>
-                    <ol>
-                        <li>
-                            <h3>
-                                <i class="fas fa-phone-alt"></i>
+
+                <div class="my-4 sm:my-8">
+                    <ol
+                        class="grid grid-cols-1 gap-4 *:bg-slate-100 hover:*:bg-slate-200 sm:grid-cols-2 sm:gap-6"
+                    >
+                        <li
+                            class="first:mt-0 border p-2 rounded shadow-sm sm:shadow-none"
+                        >
+                            <h3 class="text-md pb-2 font-bold">
+                                <i
+                                    class="fas fa-phone-alt text-sky-400 mr-4"
+                                ></i>
                                 <strong>Contactez-nous :</strong>
                             </h3>
-                            Remplissez notre formulaire en ligne ou appelez-nous
-                            directement. Nous planifierons un rendez-vous selon
-                            votre convenance, que vous soyez dans le Rhône,
-                            l'Ain ou l'Isère.
+                            <p class="text-sm">
+                                Remplissez notre formulaire en ligne ou
+                                appelez-nous directement. Nous planifierons un
+                                rendez-vous selon votre convenance, que vous
+                                soyez dans le Rhône, l'Ain ou l'Isère.
+                            </p>
                         </li>
-                        <li>
-                            <h3>
-                                <i class="fas fa-tools"></i>
+                        <li class="border p-2 rounded shadow-sm sm:shadow-none">
+                            <h3 class="text-md pb-2 font-bold">
+                                <i class="fas fa-tools text-sky-400 mr-4"></i>
                                 <strong>Préparation du véhicule :</strong>
                             </h3>
-                            Assurez-vous que le véhicule est accessible et que
-                            tous les objets personnels ont été retirés.
+                            <p class="text-sm">
+                                Assurez-vous que le véhicule est accessible et
+                                que tous les objets personnels ont été retirés.
+                            </p>
                         </li>
-                        <li>
-                            <h3>
-                                <i class="fas fa-truck-moving"></i>
+                        <li class="border p-2 rounded shadow-sm sm:shadow-none">
+                            <h3 class="text-md pb-2 font-bold">
+                                <i
+                                    class="fas fa-truck-moving text-sky-400 mr-4"
+                                ></i>
                                 <strong>Rendez-vous sur place :</strong>
                             </h3>
-                            Notre équipe professionnelle se rendra à l'adresse
-                            indiquée pour évaluer l'état de l'épave.
+                            <p class="text-sm">
+                                Notre équipe professionnelle se rendra à
+                                l'adresse indiquée pour évaluer l'état de
+                                l'épave.
+                            </p>
                         </li>
-                        <li>
-                            <h3>
-                                <i class="fas fa-recycle"></i>
+                        <li class="border p-2 rounded shadow-sm sm:shadow-none">
+                            <h3 class="text-md pb-2 font-bold">
+                                <i class="fas fa-recycle text-sky-400 mr-4"></i>
                                 <strong>Enlèvement et recyclage :</strong>
                             </h3>
-                            Nous enlevons l'épave et nous occupons de toutes les
-                            démarches pour son recyclage écologique.
+                            <p class="text-sm">
+                                Nous enlevons l'épave et nous occupons de toutes
+                                les démarches pour son recyclage écologique.
+                            </p>
                         </li>
-                        <li>
-                            <h3>
-                                <i class="fas fa-file-alt"></i>
+                        <li class="border p-2 rounded shadow-sm sm:shadow-none">
+                            <h3 class="text-md pb-2 font-bold">
+                                <i
+                                    class="fas fa-file-alt text-sky-400 mr-4"
+                                ></i>
                                 <strong>Certificat de destruction :</strong>
                             </h3>
-                            Vous recevrez un certificat de destruction, preuve
-                            que votre véhicule a été traité conformément à la
-                            réglementation.
+                            <p class="text-sm">
+                                Vous recevrez un certificat de destruction,
+                                preuve que votre véhicule a été traité
+                                conformément à la réglementation.
+                            </p>
                         </li>
                     </ol>
-                </ol>
+                </div>
             </section>
-            <div id="map" style="height: calc(50vh - 53px); width: 100vw">
-                <l-map
-                    ref="map"
-                    :zoom="zoom"
-                    :center="[45.75455153454797, 5.361328125]"
+        </div>
+        <div id="map" style="height: calc(50vh - 53px); width: 100vw">
+            <l-map
+                ref="map"
+                :zoom="zoom"
+                :center="[45.75455153454797, 5.361328125]"
+            >
+                <l-tile-layer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    layer-type="base"
+                    name="OpenStreetMap"
+                ></l-tile-layer>
+                <!-- Ajout des marqueurs sur la carte -->
+                <l-marker
+                    v-for="(marker, index) in markersData"
+                    :key="index"
+                    :lat-lng="marker.coords"
                 >
-                    <l-tile-layer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        layer-type="base"
-                        name="OpenStreetMap"
-                    ></l-tile-layer>
-                    <!-- Ajout des marqueurs sur la carte -->
-                    <l-marker
-                        v-for="(marker, index) in markersData"
-                        :key="index"
-                        :lat-lng="marker.coords"
-                    >
-                        <l-popup>
-                            <strong>{{ marker.name }}</strong>
-                            <br /><br />
-                            {{ marker.description }}
-                        </l-popup>
-                    </l-marker>
+                    <l-popup>
+                        <strong>{{ marker.name }}</strong>
+                        <br /><br />
+                        {{ marker.description }}
+                    </l-popup>
+                </l-marker>
 
-                    <!-- Ajout des données GeoJSON à la carte avec stylisation -->
-                    <l-geo-json
-                        :geojson="geoJsonData as GeoJSON.GeoJsonObject"
-                        :options="{ style: style }"
-                    ></l-geo-json>
-                </l-map>
-            </div>
-        </article>
-    </div>
+                <!-- Ajout des données GeoJSON à la carte avec stylisation -->
+                <l-geo-json
+                    :geojson="responseGeoJsonData"
+                    :options="{ style: style }"
+                ></l-geo-json>
+            </l-map>
+        </div>
+        <div
+            class="h-80 bg-[url('@/assets/images/autos/auto-train.webp')] bg-center bg-no-repeat lg:h-96 bg-cover"
+        ></div>
+    </article>
 </template>
 
-<style scoped lang="scss">
-.container {
-    height: 100%;
-    max-width: 100vw;
-    text-align: left;
-    color: var(--gray-3);
-
-    header {
-        width: 100vw;
-        color: var(--gray-1);
-        height: 200px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        background-color: var(--gray-3);
-
-        h1 {
-            text-shadow: 0 0 10px var(--dark-1);
-            text-transform: uppercase;
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-
-            i {
-                color: var(--warning-1);
-            }
-
-            span {
-                height: 70%;
-            }
-
-            div {
-                height: 30%;
-            }
-        }
-    }
-}
-
-h2,
-h3 {
-    padding: 0;
-    font-weight: 700;
-}
-
-article {
-    section {
-        padding: 3rem 1rem 0;
-
-        p {
-            padding-top: 2rem 0 1em;
-            letter-spacing: 1.6px;
-        }
-
-        .div-age {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--success-1);
-            color: var(--gray-1);
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 1rem 0;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        ol {
-            padding: 1rem 0.5rem 0;
-            margin: 1em 0 3rem;
-            max-width: 700px;
-            position: relative;
-
-            &::before {
-                content: '';
-                width: 0.5rem;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: var(--gray-3);
-                z-index: -1;
-            }
-
-            li {
-                padding: 0.5rem 1.5rem 1rem;
-                border-radius: 0.5rem;
-                background: var(--gray-2);
-                color: var(--dark-1);
-
-                h3 {
-                    margin-bottom: 1rem;
-                }
-
-                i {
-                    padding-right: 0.5rem;
-                    color: var(--primary-1);
-                }
-                strong {
-                    text-transform: uppercase;
-                }
-            }
-
-            li + li {
-                margin-top: 1rem;
-            }
-        }
-    }
-}
-</style>
+<style scoped lang="css"></style>

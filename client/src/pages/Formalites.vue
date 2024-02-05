@@ -1,102 +1,166 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="container">
-        <article>
-            <header>
-                <h1>
-                    <i class="fas fa-file-alt"></i>
-                    <div>
-                        <span>Formalités</span>
-                        <span>Administratives</span>
-                    </div>
-                </h1>
-            </header>
-
-            <h2>
-                <i class="fas fa-list-alt"></i> - Veuillez prendre connaissance
-                des conditions requises pour toute demande d'enlèvement de
-                véhicule hors d'usage
-            </h2>
-
-            <ul>
-                <li>
-                    Veuillez compléter le formulaire de cession de véhicule,
-                    disponible sur le site officiel du service public à
-                    l'adresse suivante
-                    <a
-                        class="link"
-                        href="https://www.service-public.fr/simulateur/calcul/15776"
-                        >https://Service-public.fr/simulateur/calcul/15776</a
-                    >.<br />
-                    <strong>
-                        Notez que nous pouvons le faire directement sur place
-                        pour vous facilitez les démarches.
-                    </strong>
-                </li>
-                <li>
-                    <strong>Certificat d'Immatriculation (Carte Grise)</strong>
-                    : Assurez-vous de posséder le certificat d'immatriculation
-                    du véhicule, communément appelé carte grise.
-                </li>
-                <li>
-                    <strong>Copie de Pièce d'Identité</strong> : Il est
-                    nécessaire de fournir une copie de votre pièce d'identité
-                    valide.
-                </li>
-                <li>
-                    <strong>Certificat de Non-Gage</strong> : Obtenez un
-                    certificat de non-gage depuis le site du Ministère de
-                    l'Intérieur français, accessible via le lien suivant
-                    <a
-                        href="https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat"
-                        >https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat</a
-                    >.
-                </li>
-            </ul>
-
-            <h3>
-                <i class="fas fa-truck-pickup"></i> - Lors de l'enlèvement du
-                véhicule, veuillez vous assurer de respecter les points suivants
-            </h3>
-
-            <ol type="1">
-                <li>
-                    <strong>Barrage de la Carte Grise pour Cession</strong> : Au
-                    moment de l'intervention, la carte grise doit être barrée
-                    spécifiquement pour la cession et être destinée à la
-                    destruction. Elle doit comporter la mention « cédée le
-                    XX/XX/XXX à XXhXX», écrite de façon lisible et inaltérable.
-                </li>
-                <li>
-                    <strong>Signature du Propriétaire</strong> : La carte grise
-                    barrée doit être signée par le propriétaire du véhicule.
-                    <strong>C'est une obligation légale</strong>
-                </li>
-                <li>
-                    <strong>Remise des Documents à l'Épaviste</strong> :
-                    Fournissez le certificat de non-gage et la copie de votre
-                    pièce d'identité à l'épaviste. Ces documents sont essentiels
-                    pour que l'épaviste puisse transporter votre épave vers un
-                    centre VHU agréé, tout en garantissant que le véhicule n'est
-                    sujet à aucune restriction administrative mentionnée dans le
-                    certificat de non-gage.
-                </li>
-            </ol>
-
-            <hr />
-
-            <div class="satisfaction">
-                <routerLink to="/contact">Enlever une épave ?</routerLink>
+    <article class="mt-14">
+        <header
+            class="bg-slate-900 h-44 flex items-center justify-center sm:h-56 md:h-72"
+        >
+            <h1
+                class="text-yellow-200 flex flex-col gap-4 items-center sm:gap-5 md:gap-6"
+            >
+                <i class="fas fa-file-alt text-4xl sm:text-5xl md:text-6xl"></i>
                 <span
-                    ><i class="fas fa-thumbs-up"></i> Satisfaction Garantie à
-                    100%</span
+                    class="text-3xl sm:text-4xl md:text-5xl text-white text-center"
+                    >Formalités Administratives</span
                 >
-            </div>
+            </h1>
+        </header>
 
-            <div class="info">
-                <p>
-                    Notre vaste réseau d'épavistes professionnels est à votre
+        <!-- CONTAINER -->
+        <div class="container mx-auto">
+            <section>
+                <!-- Conditions -->
+                <div class="grid grid-cols-1 p-4 md:p-8 lg:p-12 xl:p-16">
+                    <h2 class="text-xl font-bold">
+                        <i class="fas fa-list-alt text-sky-500"></i> -
+                        Conditions
+                    </h2>
+
+                    <p class="pb-4">
+                        <small>
+                            Veuillez prendre connaissance des conditions
+                            requises pour toute demande d'enlèvement de véhicule
+                            hors d'usage.
+                        </small>
+                    </p>
+
+                    <div
+                        class="grid grid-cols-1 h-fit md:grid-cols-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-2 lg:gap-8 xl:gap-16"
+                    >
+                        <ul class="*:pl-2 *:mb-4 col-span-2 lg:col-span-1">
+                            <li>
+                                Veuillez compléter le formulaire de cession de
+                                véhicule, disponible sur le site officiel du
+                                service public à l'adresse suivante&nbsp;
+                                <a
+                                    class="text-sky-600 font-bold"
+                                    href="https://www.service-public.fr/simulateur/calcul/15776"
+                                    >https://Service-public.fr/simulateur/calcul/15776</a
+                                >.<br />
+                                <strong class="text-red-600">
+                                    Notez que je peux le faire directement sur
+                                    place pour vous facilitez les démarches.
+                                </strong>
+                            </li>
+                            <li>
+                                <strong
+                                    >Certificat d'Immatriculation (Carte
+                                    Grise)</strong
+                                >
+                                : Assurez-vous de posséder le certificat
+                                d'immatriculation du véhicule, communément
+                                appelé carte grise.
+                            </li>
+                            <li>
+                                <strong>Copie de Pièce d'Identité</strong> : Il
+                                est nécessaire de fournir une copie de votre
+                                pièce d'identité valide.
+                            </li>
+                            <li>
+                                <strong>Certificat de Non-Gage</strong> :
+                                Obtenez un certificat de non-gage depuis le site
+                                du Ministère de l'Intérieur français, accessible
+                                via le lien suivant
+                                <a
+                                    class="text-sky-600 font-bold"
+                                    href="https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat"
+                                    >https://siv.interieur.gouv.fr/map-usg-ui/do/accueil_certificat</a
+                                >.
+                            </li>
+                        </ul>
+                        <div
+                            class="bg-[url('@/assets/images/autos/auto-portrait.webp')] min-h-96 bg-center bg-cover"
+                        ></div>
+                    </div>
+                </div>
+
+                <!-- Enlèvement -->
+                <div class="grid grid-cols-1 p-4 md:p-8 lg:p-12 xl:p-16">
+                    <h2 class="text-xl font-bold">
+                        <i class="fas fa-truck-pickup text-sky-500"></i> -
+                        Enlèvement
+                    </h2>
+
+                    <p class="col-span-2 pb-8">
+                        Lors de l'enlèvement du véhicule, veuillez vous assurer
+                        de respecter les points suivants
+                    </p>
+
+                    <div
+                        class="grid grid-cols-1 h-fit md:grid-cols-3 md:gap-4 lg:grid-cols-2 xl:grid-cols-2 lg:gap-8 xl:gap-16"
+                    >
+                        <div
+                            class="bg-[url('@/assets/images/autos/auto-night.webp')] min-h-96 bg-center bg-cover"
+                        ></div>
+
+                        <ol class="*:pl-2 *:mb-4 col-span-2 lg:col-span-1">
+                            <li>
+                                <strong
+                                    >Barrage de la Carte Grise pour
+                                    Cession</strong
+                                >
+                                : Au moment de l'intervention, la carte grise
+                                doit être barrée spécifiquement pour la cession
+                                et être destinée à la destruction. Elle doit
+                                comporter la mention « cédée le XX/XX/XXX à
+                                XXhXX», écrite de façon lisible et inaltérable.
+                            </li>
+                            <li>
+                                <strong>Signature du Propriétaire</strong> : La
+                                carte grise barrée doit être signée par le
+                                propriétaire du véhicule.
+                                <strong>C'est une obligation légale</strong>
+                            </li>
+                            <li>
+                                <strong
+                                    >Remise des Documents à l'Épaviste</strong
+                                >
+                                : Fournissez le certificat de non-gage et la
+                                copie de votre pièce d'identité à l'épaviste.
+                                Ces documents sont essentiels pour que
+                                l'épaviste puisse transporter votre épave vers
+                                un centre VHU agréé, tout en garantissant que le
+                                véhicule n'est sujet à aucune restriction
+                                administrative mentionnée dans le certificat de
+                                non-gage.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SATISFACTION -->
+            <section
+                class="h-44 bg-gray-200 p-6 text-black flex flex-col justify-evenly items-center"
+            >
+                <routerLink
+                    class="bg-yellow-400 uppercase hover:bg-yellow-600 max-w-96 rounded mx-auto px-6 py-4 text-center font-bold shadow-sm"
+                    to="/contact"
+                >
+                    Contactez-nous
+                </routerLink>
+                <span class="font-bold text-slate-900">
+                    <i class="fas fa-thumbs-up text-2xl"></i>
+                    Satisfaction Garantie à 100%
+                </span>
+            </section>
+
+            <!-- INFO -->
+            <section
+                class="h-fit bg-slate-700 px-2 py-8 text-white flex flex-col gap-4 justify-evenly *:first-letter:text-xl *:first-letter:text-yellow-200 *:first-letter:pr-1 *:w-3/4 lg:*:w-2/4 *:mx-auto"
+            >
+                <p class="">
+                    Mon réseau d'épavistes professionnels est à votre
                     disposition pour offrir une solution efficace et rapide pour
                     l'enlèvement de votre véhicule en fin de vie vers un centre
                     VHU agréé.
@@ -106,149 +170,9 @@
                     garantissant le respect strict des normes de sécurité et en
                     assurant une totale transparence tout au long du processus.
                 </p>
-            </div>
-        </article>
-    </div>
+            </section>
+        </div>
+    </article>
 </template>
 
-<style scoped lang="scss">
-.container {
-    height: 100%;
-    max-width: 100vw;
-    text-align: left;
-    color: var(--gray-3);
-}
-
-header {
-    width: 100vw;
-    color: var(--gray-1);
-    height: 250px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: var(--gray-3);
-}
-
-h1 {
-    text-shadow: 0 0 10px var(--dark-1);
-    text-transform: uppercase;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-
-    span {
-        height: 60%;
-    }
-
-    div {
-        height: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-}
-
-h2,
-h3 {
-    padding: 1em 1em 0;
-    font-weight: 700;
-}
-
-ul {
-    list-style-type: square;
-    padding: 1rem 1.5rem 0;
-
-    li {
-        margin-left: 1em;
-        padding: 0.5em 1em;
-
-        a {
-            color: var(--primary-1);
-        }
-    }
-}
-
-ul {
-    margin-bottom: 2em;
-}
-
-ol {
-    padding: 1rem 3rem 0;
-    margin: 1em 0 3rem;
-    max-width: 700px;
-    position: relative;
-
-    &::before {
-        content: '';
-        width: 0.5rem;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: var(--gray-3);
-        z-index: -1;
-    }
-
-    li {
-        padding: 0.5rem 1.5rem 1rem;
-        border-radius: 0.5rem;
-        background: var(--gray-2);
-        color: var(--dark-1);
-    }
-
-    li + li {
-        margin-top: 1rem;
-    }
-}
-
-::marker {
-    font-weight: 900;
-    color: var(--gray-3);
-    font-size: 1.5rem;
-}
-
-.satisfaction {
-    height: 250px;
-    padding: 3em;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-
-    span {
-        font-size: 1.3rem;
-    }
-
-    a {
-        background-color: var(--success-1);
-        color: var(--gray-1);
-        text-shadow: 0 0 4px var(--dark-3);
-        text-transform: uppercase;
-        font-weight: bold;
-        padding: 12px 24px;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px var(--dark-3);
-        cursor: pointer;
-    }
-}
-
-.info {
-    background: var(--gray-3);
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    p {
-        color: var(--gray-1);
-        &:first-child {
-            margin-bottom: 1em;
-        }
-    }
-}
-</style>
+<style scoped lang="css"></style>

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
-    <header>
+    <header class="h-14 fixed w-full z-50">
         <Navbar />
     </header>
     <main>
@@ -13,38 +13,39 @@ import Navbar from './components/Navbar.vue';
             </Transition>
         </router-view>
     </main>
-    <footer>
-        <span
-            ><small
-                >&copy; Copyright 2024-2027 - tous droits réservés</small
-            ></span
+    <footer
+        class="flex-auto bg-slate-950 grid grid-cols-1 py-8 sm:grid-cols-2 lg:py-16"
+    >
+        <div
+            class="visible bg-[url('@/assets/images/logo.svg')] bg-cover bg-center border-8 rounded border-slate-700 bg-gray-100 h-48 w-80 mx-auto lg:h-56 lg:w-96"
+        ></div>
+
+        <div
+            class="flex flex-col justify-evenly py-6 items-center text-slate-50 gap-2"
         >
-        <span
-            ><small>
-                <routerLink to="/mentions-legales">Mentions Légales</routerLink>
+            <span>
+                <small>
+                    &copy; Copyright 2024-2027 - tous droits réservés
+                </small>
+            </span>
+
+            <small
+                class="text-sky-400 font-mono text-lg underline underline-offset-2"
+            >
+                <routerLink to="/mentions-legales">
+                    Mentions Légales
+                </routerLink>
             </small>
-        </span>
-        <span>
-            <small>Site réalisé par Mr GUILLON Alain</small>
-        </span>
+
+            <small
+                >Site réalisé par Mr
+                <span class="text-red-400">GUILLON Alain</span></small
+            >
+        </div>
     </footer>
 </template>
 
-<style lang="scss">
-@use './assets/scss/main.scss' as *;
-
-header {
-    width: 100vw;
-}
-main {
-    padding: 0;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-
+<style lang="css">
 .animePage-enter-from {
     opacity: 0;
 }
@@ -53,23 +54,5 @@ main {
 }
 .animePage-enter-active {
     transition: all 0.4s ease-in-out;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--dark-2);
-    height: 100%;
-    padding: 10px;
-
-    span {
-        color: var(--gray-2);
-    }
-
-    a {
-        color: var(--success-1);
-    }
 }
 </style>

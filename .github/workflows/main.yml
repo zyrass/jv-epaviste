@@ -12,33 +12,34 @@ jobs:
             - name: Construction
               run: echo 'Coucou je suis le build'
 
-    test-unit:
-        needs: build
-        runs-on: ubuntu@22.04
-        steps:
-            - name: Tests unitaires
-              run: echo 'Coucou je suis un test unitaire'
+    # test-unit:
+    #     needs: build
+    #     runs-on: ubuntu@22.04
+    #     steps:
+    #         - name: Tests unitaires
+    #           run: echo 'Coucou je suis un test unitaire'
 
-    test-e2e:
-        needs:
-            - build
-            - test-unit
-        runs-on: ubuntu@22.04
-        steps:
-            - name: Tests unitaires
-              run: echo 'Coucou je suis un test end 2 end'
+    # test-e2e:
+    #     needs:
+    #         - build
+    #         - test-unit
+    #     runs-on: ubuntu@22.04
+    #     steps:
+    #         - name: Tests unitaires
+    #           run: echo 'Coucou je suis un test end 2 end'
 
-    pre-prod-deploy:
-        needs:
-            - test-unit
-            - test-e2e
-        runs-on: ubuntu@22.04
-        steps:
-            - name: Pré production
-              run: echo 'Coucou je suis un test de pré production'
+    # pre-prod-deploy:
+    #     needs:
+    #         - test-unit
+    #         - test-e2e
+    #     runs-on: ubuntu@22.04
+    #     steps:
+    #         - name: Pré production
+    #           run: echo 'Coucou je suis un test de pré production'
 
     production-deploy:
-        needs: pre-prod-deploy
+        # needs: pre-prod-deploy
+        needs: build
         runs-on: ubuntu@22.04
         steps:
             - name: Production

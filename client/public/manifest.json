@@ -3,17 +3,17 @@
     "description": "Une Progressive Web App dédiée à Jérôme Vigoureux, épaviste ferrailleur fort de 8 ans d'expérience dans le Rhône, étendant son activité à l'Isère et l'Ain. Fiable et avenant, contactez-le pour le recyclage de vos véhicules hors d'usage (VHU).",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "./android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "./android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone",

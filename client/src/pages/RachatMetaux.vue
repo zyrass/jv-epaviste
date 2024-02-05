@@ -1,139 +1,92 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="container">
-        <article>
-            <header>
-                <h1>
-                    <i class="fas fa-recycle"></i>
-                    <span>Rachat Métaux</span>
-                </h1>
-            </header>
+    <article class="mt-14">
+        <header
+            class="bg-slate-900 h-44 flex items-center justify-center sm:h-56 md:h-72"
+        >
+            <h1
+                class="text-yellow-200 flex flex-col gap-4 items-center sm:gap-5 md:gap-6"
+            >
+                <i class="fas fa-recycle text-4xl sm:text-5xl md:text-6xl"></i>
+                <span
+                    class="text-3xl sm:text-4xl md:text-5xl text-white text-center"
+                    >Rachat Métaux</span
+                >
+            </h1>
+        </header>
+
+        <!-- CONTAINER -->
+        <div class="container mx-auto">
             <section>
-                <h2><i class="fas fa-handshake"></i> - Notre Engagement</h2>
-                <p>
-                    <strong> <em>Spécialistes du rachat de métaux</em> </strong
-                    >, nous sommes continuellement à la recherche de matériaux à
-                    recycler. Nous proposons des tarifs compétitifs pour une
-                    large gamme de métaux.
-                </p>
-                <img
-                    src="@/assets/images/handshake.webp"
-                    alt="image of handshake"
-                />
+                <!-- Conditions -->
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-4 md:p-8 lg:p-12 xl:p-16"
+                >
+                    <h2 class="text-xl font-bold sm:col-span-2">
+                        <i class="fas fa-handshake text-sky-500"></i> - Mon
+                        Engagement
+                    </h2>
 
-                <h2><i class="fas fa-magnet"></i> - Métaux Rachetés</h2>
-                <ul>
-                    <li><strong>Cuivre</strong></li>
-                    <li><strong>Aluminium</strong></li>
-                    <li><strong>Fer</strong></li>
-                    <li><strong>Plomb</strong> et <strong>Zinc</strong></li>
-                    <li>
-                        <strong>Inox</strong> et
-                        <strong>Alliages spéciaux</strong>
-                    </li>
-                </ul>
-                <img
-                    src="@/assets/images/metaux.webp"
-                    alt="image of handshake"
-                />
+                    <p class="py-4 sm:col-span-1">
+                        <small>
+                            <strong> Spécialistes du rachat de métaux, </strong>
+                            <br />continuellement je suis à la recherche de
+                            matériaux à recycler. Je propose des tarifs
+                            compétitifs pour une large gamme de métaux.
+                        </small>
+                    </p>
 
-                <!--
-                <h2><i class="fas fa-balance-scale"></i> - Conditions</h2>
-                <p>
-                    Chaque offre de rachat est étudiée avec soin. Nous prenons
-                    en compte les <em>frais de déplacement</em> pour assurer que
-                    l'opération soit économiquement viable pour les deux
-                    parties.
-                </p>
-                <p>
-                    Pour plus d'informations ou pour obtenir une estimation,
-                    <strong><a href="/contact">contactez-nous</a></strong> dès
-                    aujourd'hui.
-                </p>
-                <p class="rules">
-                    Pour des raisons économiques, si le déplacement s'avère non
-                    rentable, nous ne pourrons pas procéder au rachat.
-                    <strong
-                        >Notre objectif est d'assurer une transaction
-                        avantageuse pour vous comme pour nous.</strong
-                    >
-                </p>
-                -->
+                    <div
+                        class="bg-[url('@/assets/images/handshake.webp')] h-44 bg-center bg-cover sm:col-span-1"
+                    ></div>
+
+                    <h2 class="text-xl font-bold my-4 sm:col-span-2">
+                        <i class="fas fa-magnet text-sky-500"></i> - Métaux
+                        Rachetés
+                    </h2>
+                    <div
+                        class="bg-[url('@/assets/images/metaux.webp')] h-96 bg-center bg-cover sm:col-span-1"
+                    ></div>
+                    <ul class="*:pl-2 *:mb-4 sm:col-span-1">
+                        <li><strong>Cuivre</strong></li>
+                        <li><strong>Aluminium</strong></li>
+                        <li><strong>Fer</strong></li>
+                        <li><strong>Plomb</strong> et <strong>Zinc</strong></li>
+                        <li>
+                            <strong>Inox</strong> et
+                            <strong>Alliages spéciaux</strong>
+                        </li>
+                    </ul>
+
+                    <h2 class="text-xl font-bold my-4 sm:col-span-2">
+                        <i class="fas fa-envelope text-sky-500"></i> -
+                        Contactez-nous pour une offre personnalisée
+                    </h2>
+
+                    <p class="sm:col-span-2">
+                        <small>
+                            <strong>Gagnez du temps !</strong> <br />Si vous
+                            possédez des ressources mentionnées précédemment,
+                            que vous ne souhaitez plus utiliser, veuillez nous
+                            contacter en cliquant sur le bouton ci-dessous.
+                            <span
+                                >Vous serez redirigez sur notre page de
+                                contact.</span
+                            ></small
+                        >
+                        <br />
+                        <RouterLink
+                            class="inline-block bg-yellow-400 uppercase hover:bg-yellow-600 max-w-96 rounded my-4 mx-auto px-6 py-4 text-center font-bold shadow-sm"
+                            to="/contact"
+                        >
+                            Cliquez ici
+                        </RouterLink>
+                    </p>
+                </div>
             </section>
-        </article>
-    </div>
+        </div>
+    </article>
 </template>
 
-<style scoped lang="scss">
-.container {
-    height: 100%;
-    max-width: 100vw;
-    text-align: left;
-    color: var(--gray-3);
-}
-
-article {
-    header {
-        width: 100%;
-        color: var(--gray-1);
-        height: 200px;
-        background-color: var(--gray-3);
-    }
-
-    h1 {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-shadow: 0 0 10px var(--dark-1);
-        text-transform: uppercase;
-
-        i {
-            font-size: 60px;
-            margin-bottom: 2rem;
-            color: var(--warning-1);
-        }
-    }
-
-    section {
-        padding: 1rem 1.5rem 3rem;
-
-        h2 {
-            margin: 1rem 0 1rem;
-            i {
-                color: var(--success-2);
-            }
-        }
-
-        ul {
-            padding-left: 2rem;
-            li {
-                list-style-type: disc;
-                padding-left: 1rem;
-                &:last-child {
-                    padding-bottom: 1rem;
-                }
-            }
-        }
-
-        p {
-            padding: 0 0 1rem;
-            &:last-child {
-                margin-top: 2rem;
-                background-color: var(--danger-1);
-                color: var(--gray-1);
-                padding: 1rem;
-                text-align: center;
-                font-style: italic;
-                font-weight: 900;
-                box-shadow: inset 0 0 25px var(--dark-1),
-                    0 0 7.5px var(--dark-1);
-                border-radius: 4px;
-                border: 1px solid var(--dark-2);
-            }
-        }
-    }
-}
-</style>
+<style scoped lang="css"></style>

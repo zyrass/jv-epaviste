@@ -1,66 +1,172 @@
 <template>
-    <nav id="navbar">
-        <span class="title">jv-epaviste.fr</span>
-        <span class="phone">06 46 89 65 78</span>
+    <nav
+        class="bg-slate-950 h-full flex items-center justify-between xl:justify-around"
+    >
+        <div
+            class="bg-[url('@/assets/images/logo.svg')] bg-cover bg-center bg-white h-14 w-28"
+        ></div>
+        <small
+            class="text-green-400 font-bold sm:text-sm mx-2 lg:text-lg lg:mx-0"
+            >06 46 89 65 78</small
+        >
 
-        <button class="menu-btn" popovertarget="menu-content">
-            <img src="@/assets/images/Hamburger_icon.svg" alt="" />
+        <!-- Bouton visible sur mobile -->
+        <button
+            v-if="windowWidth <= 992"
+            class="bg-slate-50 rounded-md p-2 mr-4 hover:bg-slate-100 focus:bg-slate-200"
+            popovertarget="menu"
+            popovertargetaction="show"
+        >
+            <img
+                class="h-5"
+                src="@/assets/images/Hamburger_icon.svg"
+                alt="Icon hamburger"
+            />
         </button>
 
+        <!-- Menu visible sur résolutions plus grandes -->
+        <div
+            class="*:text-white focus:*:text-black h-full flex"
+            v-if="windowWidth > 992"
+        >
+            <routerLink
+                to="/"
+                exact
+                class="nav-link py-2 px-6 lg:px-4 self-center hover:bg-slate-200 focus:bg-yellow-400 active:bg-yellow-200"
+                >Accueil</routerLink
+            >
+            <routerLink
+                to="/enlevement-epave"
+                class="py-2 px-6 lg:px-4 self-center hover:bg-slate-200 hover:text-black focus:bg-yellow-400 active:bg-yellow-200"
+                >Enlèvement Epave</routerLink
+            >
+            <routerLink
+                to="/formalites-administratives"
+                class="py-2 px-6 lg:px-4 self-center hover:bg-slate-200 hover:text-black focus:bg-yellow-400 active:bg-yellow-200"
+                >Formalités Administratives</routerLink
+            >
+            <routerLink
+                to="/rachat-metaux"
+                class="py-2 px-6 lg:px-4 self-center hover:bg-slate-200 hover:text-black focus:bg-yellow-400 active:bg-yellow-200"
+                >Rachat Métaux</routerLink
+            >
+            <routerLink
+                to="/contact"
+                class="py-2 px-6 lg:px-4 self-center hover:bg-slate-200 hover:text-black focus:bg-yellow-400 active:bg-yellow-200"
+            >
+                Contact</routerLink
+            >
+        </div>
+
+        <!-- Menu visible exlusivement sur téléphone, jusqu'à prendre en charge les tablettes -->
         <Transition appear>
-            <div id="menu-content" popover role="menu">
-                <div class="menu-links">
-                    <routerLink to="/"
-                        ><i class="fas fa-home"></i> Accueil</routerLink
+            <div
+                id="menu"
+                popover
+                role="menu"
+                class="fixed min-h-screen flex flex-col justify-between left-auto bg-slate-950 mb-4"
+                v-if="windowWidth <= 992"
+            >
+                <div class="menu-links flex-col flex gap-y-2 py-4 px-2">
+                    <div class="self-end">
+                        <button
+                            v-if="windowWidth <= 992"
+                            class="bg-slate-50 size-8 rounded-md mb-2 mr-2 justify-center flex items-center hover:bg-slate-100 focus:bg-slate-200"
+                            popovertarget="menu"
+                            popovertargetaction="hide"
+                        >
+                            <img
+                                class="h-5"
+                                src="@/assets/images/cross_icon.svg"
+                                alt="Icon hamburger"
+                            />
+                        </button>
+                    </div>
+                    <!-- Bouton visible sur mobile -->
+
+                    <routerLink
+                        to="/"
+                        class="bg-slate-700 text-sky-50 p-2 capitalize"
+                        ><i class="fas fa-home text-yellow-200 pl-2 mr-4"></i>
+                        Accueil</routerLink
                     >
-                    <routerLink to="/enlevement-epave"
-                        ><i class="fas fa-truck"></i> Enlèvement
-                        Epave</routerLink
+                    <routerLink
+                        to="/enlevement-epave"
+                        class="bg-slate-700 text-sky-50 p-2 capitalize"
+                        ><i class="fas fa-truck text-yellow-200 pl-2 mr-4"></i>
+                        Enlèvement Epave</routerLink
                     >
-                    <routerLink to="/formalites-administratives"
-                        ><i class="fas fa-file-alt"></i> Formalités
-                        Administratives</routerLink
+                    <routerLink
+                        to="/formalites-administratives"
+                        class="bg-slate-700 text-slate-100 p-2 capitalize"
+                        ><i
+                            class="fas fa-file-alt text-yellow-200 pl-2 mr-4"
+                        ></i>
+                        Formalités Administratives</routerLink
                     >
-                    <routerLink to="/rachat-metaux"
-                        ><i class="fas fa-coins"></i> Rachat Métaux</routerLink
+                    <routerLink
+                        to="/rachat-metaux"
+                        class="bg-slate-700 text-slate-100 p-2 capitalize"
+                        ><i class="fas fa-coins text-yellow-200 pl-2 mr-4"></i>
+                        Rachat Métaux</routerLink
                     >
-                    <routerLink to="/contact"
-                        ><i class="fas fa-envelope"></i> Contact</routerLink
+                    <routerLink
+                        to="/contact"
+                        class="bg-slate-700 text-slate-100 p-2 capitalize"
+                        ><i
+                            class="fas fa-envelope text-yellow-200 pl-2 mr-4"
+                        ></i>
+                        Contact</routerLink
                     >
                     <!-- Autres liens -->
                 </div>
-                <div class="status">
-                    Actuellement
-                    <span
-                        :class="{
-                            isOpen: openStatus === 'ouvert',
-                            isClose: openStatus === 'fermé',
-                        }"
-                    >
-                        {{ openStatus }}
-                    </span>
+                <div
+                    class="status text-white flex flex-col justify-center items-center"
+                >
+                    <div class="my-6">
+                        <span class="mr-2">Actuellement</span>
+                        <span
+                            :class="{
+                                'text-green-500': openStatus === 'ouvert',
+                                'text-red-500': openStatus === 'fermé',
+                            }"
+                            class=""
+                        >
+                            {{ openStatus }}
+                        </span>
+                    </div>
 
-                    <div class="horaires">
-                        <h3>Horaires d'ouverture</h3>
+                    <div
+                        class="bg-slate-950 p-4 sm:p-5 mx-auto text-center mb-6 border border-white rounded-xl shadow-lg"
+                    >
+                        <h3 class="text-xl">Horaires d'ouverture</h3>
                         <p>
                             <strong>7 jours sur 7</strong><br />
-                            <span
-                                >⏰ De <span class="heure">7 h 00</span> à
-                                <span class="heure">20 h 00</span></span
-                            >
+                            <span>
+                                ⏰ De
+                                <span class="text-sky-400">
+                                    <strong>7 h 00</strong>
+                                </span>
+                                à
+                                <span class="text-sky-400">
+                                    <strong>20 h 00</strong> </span
+                                >.
+                            </span>
                         </p>
                     </div>
                 </div>
-                <div class="menu-logo">
-                    <img :src="Logo" alt="Logo jv-epaviste.fr" />
-                </div>
+                <div
+                    class="h-52 w-full sm:h-60 mx-auto bg-[url('@/assets/images/logo.svg')] bg-white bg-cover bg-center"
+                ></div>
             </div>
         </Transition>
     </nav>
 </template>
 
 <script setup lang="ts">
-import Logo from '@/assets/images/logo.svg';
+import { onBeforeUnmount } from 'vue';
+import { onMounted } from 'vue';
+import { ref } from 'vue';
 import { computed } from 'vue';
 
 // Afficher Ouvert ou Fermé
@@ -77,211 +183,69 @@ const isOpen = computed(() => {
 const openStatus = computed(() => {
     return isOpen.value ? 'ouvert' : 'fermé';
 });
+
+const windowWidth = ref(window.innerWidth);
+
+const updateWindowWidth = () => (windowWidth.value = window.innerWidth);
+onMounted(() => {
+    window.addEventListener('resize', updateWindowWidth);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', updateWindowWidth);
+});
 </script>
 
-<style lang="scss">
-#navbar {
-    position: fixed;
-    width: 100vw;
-    background-color: #222222;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 54px;
-    z-index: 1000;
+<style lang="css">
+/* @use '@/assets/scss/components/navbar.scss' as *; */
 
-    span {
-        &.title {
-            font-size: calc(0.8rem + 1vmin);
-            color: var(--gray-1);
-            margin-left: 1rem;
-        }
-        &.phone {
-            font-size: calc(0.8rem + 1vmin);
-            color: var(--warning-1);
-        }
-    }
+#menu {
+    width: 300px;
+    height: 100%;
 
-    .menu-btn {
-        height: calc(100% / 1.8);
-        width: calc(25% / 1.8);
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.7;
-        transition: all 0.4s ease-in-out;
-        &:hover {
-            opacity: 1;
-            border: none;
-        }
-    }
-}
-
-#menu-content {
-    position: fixed;
-    top: 53px;
-    right: 0;
-    width: 80%;
-    height: calc(100vh - 53px);
-    background: var(--dark-2);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0px 10px 10px;
+    /*  undo popover styles  */
     border: none;
+    padding: 0;
+    margin: 0;
+    left: auto;
 
-    transition: translate 0.5s ease-out, display 0.5s ease-out allow-discrete,
+    /*  animate  */
+    transition:
+        translate 0.5s ease-out,
+        display 0.5s ease-out allow-discrete,
         overlay 0.5s ease-out allow-discrete;
-    translate: 150%;
-
-    &::backdrop {
-        opacity: 0;
-        background: rgba(0, 0, 0, 0.5);
-        transition: opacity 0.5s;
-    }
-
-    &:popover-open {
-        translate: 25% 0;
-
-        &::backdrop {
-            opacity: 1;
-        }
-    }
-
-    .menu-links {
-        width: 100%;
-        margin-bottom: 5px;
-        padding-top: 10px;
-        a {
-            background-color: var(--gray-3);
-            margin: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            text-decoration: none;
-            color: var(--gray-1);
-            padding: 10px 0;
-            transition: all 0.3s ease-in-out;
-            font-size: 0.8rem;
-
-            &:hover {
-                background-color: var(--gray-1);
-                color: var(--gray-3);
-            }
-
-            i {
-                padding: 0 15px;
-            }
-        }
-    }
-
-    .status {
-        margin: 1rem 0;
-    }
-
-    // table {
-    //     font-size: small;
-    //     margin: 1rem auto;
-    //     border-collapse: collapse;
-    //     background-color: var(--gray-1);
-    //     width: 100%;
-    //     color: var(--dark-2);
-    //     thead {
-    //         text-transform: uppercase;
-    //         tr {
-    //             th {
-    //                 border: 1px solid var(--dark-1);
-    //                 padding: 5px 0;
-    //                 background-color: var(--gray-3);
-    //                 color: var(--gray-1);
-    //             }
-    //         }
-    //     }
-    //     tbody {
-    //         tr {
-    //             border: 1px solid var(--dark-1);
-    //             td {
-    //                 border: 1px solid var(--dark-1);
-    //                 padding: 5px;
-    //                 &:first-child {
-    //                     text-align: left;
-    //                 }
-    //                 &:not(:first-child) {
-    //                     text-align: center;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
-    .menu-logo {
-        // Styles pour le logo en bas du menu
-        background-color: var(--dark-2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img {
-            height: 200px;
-            padding-bottom: 50px;
-            // filter: invert(0.5) sepia(1) saturate(5) hue-rotate(180deg); // blue
-            filter: invert(0.9) sepia(0) saturate(1) hue-rotate(255deg); // blue
-        }
-    }
+    translate: 250px 0;
 }
 
-.isClose {
-    color: var(--danger-1);
-}
-.isOpen {
-    color: var(--success-1);
-}
-
-.horaires {
-    text-align: center;
-    margin: 20px 0;
-    background-color: var(--dark-3);
-    padding: 2rem 0;
-    box-shadow: inset 0 0 100px var(--dark-1);
-    border: 2px solid var(--gray-1);
-    border-radius: 5px;
-
-    h3 {
-        color: var(--gray-1);
-        font-weight: 700;
-    }
-
-    p {
-        strong,
-        span {
-            color: var(--gray-2);
-        }
-    }
-
-    .heure {
-        font-size: 1.2em;
-        color: var(--success-1);
-    }
-}
-
-.v-enter-from,
-.v-leave-to {
+#menu::backdrop {
     opacity: 0;
-    transform: translateX(50px);
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s;
 }
 
-.v-enter-to,
-.v-leave-from {
+#menu:popover-open {
+    translate: 0 0;
+}
+#menu:popover-open::backdrop {
     opacity: 1;
-    transform: translateX(0px);
 }
 
-.v-enter-active {
-    transition: all 0.4s ease-in-out;
+@media screen and (max-width: 992px) {
+    #menu {
+        width: 300px;
+        translate: 350px 0;
+    }
 }
 
-.v-leave-active {
-    transition: all 0.2s ease-in-out;
+.nav-link {
+    /* Styles par défaut pour les liens de navigation */
+    color: #333 !important;
+    --tw-bg-opacity: 1;
+    background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
+.nav-link.active {
+    --tw-bg-opacity: 1;
+    background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 </style>

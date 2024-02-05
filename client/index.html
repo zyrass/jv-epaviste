@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
@@ -18,13 +18,33 @@
         </title>
         <link rel="manifest" href="/manifest.json" />
 
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+
         <script
             src="https://kit.fontawesome.com/426b8c6c3e.js"
             crossorigin="anonymous"
         ></script>
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app" class="min-h-screen bg-gray-50 grid grid-cols-1"></div>
         <script type="module" src="/src/main.ts"></script>
+        <script>
+            window.axeptioSettings = {
+                clientId: '65be1264747ff40323fe9a71',
+                cookiesVersion: 'jv-epaviste-fr-EU',
+            };
+            (function (d, s) {
+                var t = d.getElementsByTagName(s)[0],
+                    e = d.createElement(s);
+                e.async = true;
+                e.src = '//static.axept.io/sdk.js';
+                t.parentNode.insertBefore(e, t);
+            })(document, 'script');
+        </script>
     </body>
 </html>
