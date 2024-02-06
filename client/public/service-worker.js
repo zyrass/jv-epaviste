@@ -1,5 +1,5 @@
 // Nom du cache (à changer pour forcer la mise à jour du cache)
-const CACHE_NAME = 'jv-epaviste-cache-v1';
+const CACHE_NAME = 'jv-epaviste-cache-v2';
 
 // Liste des ressources à mettre en cache
 const urlsToCache = [
@@ -8,10 +8,11 @@ const urlsToCache = [
     // Spécifiez d'autres ressources nécessaires ici
     '/styles/main.css',
     '/script/main.js',
-    '/images/logo.png',
+    '/logo.svg',
     '/manifest.json',
-    '/icon-192x192.png',
-    '/icon-512x512.png',
+    '/android-chrome-192x192.png',
+    '/android-chrome-512x512.png',
+    '/images/*',
 ];
 
 // Installation du service worker et mise en cache des ressources
