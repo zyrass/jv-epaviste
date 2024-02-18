@@ -495,6 +495,12 @@
     </article>
 </template>
 
+<script lang="ts">
+export default {
+    name: 'Contact',
+};
+</script>
+
 <script setup lang="ts">
 import { computed, reactive } from 'vue';
 import { z } from 'zod';

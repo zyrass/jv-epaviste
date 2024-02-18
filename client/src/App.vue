@@ -9,7 +9,9 @@ import Navbar from './components/Navbar.vue';
     <main>
         <router-view v-slot="{ Component }">
             <Transition appear mode="out-in" name="animePage">
-                <Component :is="Component" />
+                <KeepAlive include="Contact">
+                    <Component :is="Component" />
+                </KeepAlive>
             </Transition>
         </router-view>
     </main>
