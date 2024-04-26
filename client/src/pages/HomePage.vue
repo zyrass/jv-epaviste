@@ -1,4 +1,36 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+(function (w, d) {
+    var loader = function () {
+        var s = d.createElement('script'),
+            tag = d.getElementsByTagName('script')[0];
+        s.src = 'https://cdn.iubenda.com/iubenda.js';
+        tag.parentNode.insertBefore(s, tag);
+    };
+    if (w.addEventListener) {
+        w.addEventListener('load', loader, false);
+    } else if (w.attachEvent) {
+        w.attachEvent('onload', loader);
+    } else {
+        w.onload = loader;
+    }
+})(window, document);
+
+(function (w, d) {
+    var loader = function () {
+        var s = d.createElement('script'),
+            tag = d.getElementsByTagName('script')[0];
+        s.src = 'https://cdn.iubenda.com/iubenda.js';
+        tag.parentNode.insertBefore(s, tag);
+    };
+    if (w.addEventListener) {
+        w.addEventListener('load', loader, false);
+    } else if (w.attachEvent) {
+        w.attachEvent('onload', loader);
+    } else {
+        w.onload = loader;
+    }
+})(window, document);
+</script>
 
 <template>
     <article>
@@ -34,52 +66,20 @@
                 >Contactez-nous</RouterLink
             >
 
-            <a
-                href="https://www.iubenda.com/privacy-policy/99528726"
-                class="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe"
-                title="Politique de confidentialité "
-                >Politique de confidentialité</a
-            >
-            <script type="text/javascript">
-                (function (w, d) {
-                    var loader = function () {
-                        var s = d.createElement('script'),
-                            tag = d.getElementsByTagName('script')[0];
-                        s.src = 'https://cdn.iubenda.com/iubenda.js';
-                        tag.parentNode.insertBefore(s, tag);
-                    };
-                    if (w.addEventListener) {
-                        w.addEventListener('load', loader, false);
-                    } else if (w.attachEvent) {
-                        w.attachEvent('onload', loader);
-                    } else {
-                        w.onload = loader;
-                    }
-                })(window, document);
-            </script>
-            <a
-                href="https://www.iubenda.com/privacy-policy/99528726/cookie-policy"
-                class="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe"
-                title="Politique relative aux Cookies "
-                >Politique relative aux Cookies</a
-            >
-            <script type="text/javascript">
-                (function (w, d) {
-                    var loader = function () {
-                        var s = d.createElement('script'),
-                            tag = d.getElementsByTagName('script')[0];
-                        s.src = 'https://cdn.iubenda.com/iubenda.js';
-                        tag.parentNode.insertBefore(s, tag);
-                    };
-                    if (w.addEventListener) {
-                        w.addEventListener('load', loader, false);
-                    } else if (w.attachEvent) {
-                        w.attachEvent('onload', loader);
-                    } else {
-                        w.onload = loader;
-                    }
-                })(window, document);
-            </script>
+            <div class="w-1/2 px-6">
+                <a
+                    href="https://www.iubenda.com/privacy-policy/99528726/cookie-policy"
+                    class="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe"
+                    title="Politique relative aux Cookies "
+                    >Politique relative aux Cookies</a
+                >
+                <a
+                    href="https://www.iubenda.com/privacy-policy/99528726"
+                    class="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe"
+                    title="Politique de confidentialité "
+                    >Politique de confidentialité</a
+                >
+            </div>
         </header>
 
         <!-- CONTAINER -->
