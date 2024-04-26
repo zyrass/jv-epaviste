@@ -33,6 +33,53 @@
                 class="mt-5 bg-yellow-400 uppercase hover:bg-yellow-600 max-w-96 rounded mx-auto px-6 py-4 text-center font-bold shadow-sm"
                 >Contactez-nous</RouterLink
             >
+
+            <a
+                href="https://www.iubenda.com/privacy-policy/99528726"
+                class="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe"
+                title="Politique de confidentialité "
+                >Politique de confidentialité</a
+            >
+            <script type="text/javascript">
+                (function (w, d) {
+                    var loader = function () {
+                        var s = d.createElement('script'),
+                            tag = d.getElementsByTagName('script')[0];
+                        s.src = 'https://cdn.iubenda.com/iubenda.js';
+                        tag.parentNode.insertBefore(s, tag);
+                    };
+                    if (w.addEventListener) {
+                        w.addEventListener('load', loader, false);
+                    } else if (w.attachEvent) {
+                        w.attachEvent('onload', loader);
+                    } else {
+                        w.onload = loader;
+                    }
+                })(window, document);
+            </script>
+            <a
+                href="https://www.iubenda.com/privacy-policy/99528726/cookie-policy"
+                class="iubenda-black iubenda-noiframe iubenda-embed iubenda-noiframe"
+                title="Politique relative aux Cookies "
+                >Politique relative aux Cookies</a
+            >
+            <script type="text/javascript">
+                (function (w, d) {
+                    var loader = function () {
+                        var s = d.createElement('script'),
+                            tag = d.getElementsByTagName('script')[0];
+                        s.src = 'https://cdn.iubenda.com/iubenda.js';
+                        tag.parentNode.insertBefore(s, tag);
+                    };
+                    if (w.addEventListener) {
+                        w.addEventListener('load', loader, false);
+                    } else if (w.attachEvent) {
+                        w.attachEvent('onload', loader);
+                    } else {
+                        w.onload = loader;
+                    }
+                })(window, document);
+            </script>
         </header>
 
         <!-- CONTAINER -->
